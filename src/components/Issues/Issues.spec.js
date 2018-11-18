@@ -1,12 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import Issues, { IssuesNotConnected } from './Issues';
+import { Issues, IssuesConnected } from './Issues';
 
-describe('<IssuesNotConnected />', () => {
+describe('<Issues />', () => {
   const build = passedProps => {
-    const defaultProps = {};
-    return shallow(<IssuesNotConnected {...defaultProps} {...passedProps} />);
+    const defaultProps = {
+      fetching: false,
+      data: [
+        {
+          number: 2,
+          id: 1,
+        },
+      ],
+    };
+    return shallow(<Issues {...defaultProps} {...passedProps} />);
   };
 
   it('should render', () => {
@@ -17,11 +25,19 @@ describe('<IssuesNotConnected />', () => {
 
   it('should connect', () => {
     const mockStore = configureStore();
-    const store = mockStore({
-      data: {},
+    const props = {
+      data: [
+        {
+          number: 2,
+          id: 1,
+        },
+      ],
       loading: false,
+    };
+    const store = mockStore({
+      issues: props,
     });
-    const component = shallow(<Issues store={store} />);
+    const component = shallow(<IssuesConnected store={store} {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
