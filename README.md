@@ -14,6 +14,8 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
+Added `enzyme` and using `jest` snapshot testing.
+
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
@@ -31,12 +33,32 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: to create a react component. first you should change directory to src/components!**
 
-Running this would create a component directory with the name passed and add 3 files same as the component name 
-in that directory, for ex. 
+Running this would create a component directory with the name passed as argument and add 3 files same as the component name 
+
+In that directory, for ex. 
 `cd src/components`
 `npm run scaffold App`
 would create App folder and add 3 files, 
+
 App.js (with default react component), App.css, App.spec.js (with default snapshot test)   
+
+### `npm run lint`
+
+Added linting and prettier to the project for consistency of code and js coding conventions
+
+Running this script would throw errors in js like extra spaces and trailing commas etc.
+
+To fix mistakes use `npm run lint -- --fix` this would fix most of common mistakes
+
+### Git hooks (pre-commit and pre-push)
+
+Before every commit git hooks would test lint the code
+
+Before every push all test cases would be run. 
+
+We use husky to run node scripts `npm run lint` and `npm run test:ci` on pre-commit and pre-push respectively. 
+
+More on [Git Hooks](https://githooks.com/) 
 
 ## Learn More
 
