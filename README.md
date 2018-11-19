@@ -50,6 +50,10 @@ Running this script would throw errors in js like extra spaces and trailing comm
 
 To fix mistakes use `npm run lint -- --fix` this would fix most of common mistakes
 
+### `npm run deploy`
+
+This would run build and deploy this project to github pages [here](https://sandeepgujela.github.io/savedo/)
+
 ### Git hooks (pre-commit and pre-push)
 
 Before every commit git hooks would test lint the code
